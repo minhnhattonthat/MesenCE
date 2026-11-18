@@ -3,6 +3,7 @@
 #include "Debugger/DisassemblyInfo.h"
 #include "Debugger/DebugTypes.h"
 #include "Debugger/DebugUtilities.h"
+#include "Utilities/VirtualMemory.h"
 
 class IConsole;
 class Debugger;
@@ -16,7 +17,8 @@ enum class CpuType : uint8_t;
 
 struct DisassemblerSource
 {
-	vector<DisassemblyInfo> Cache;
+	//One entry (12 bytes) per byte of ROM/RAM, filled in only where code runs: demand-zero (all-zero = not initialized)
+	ZeroedArray<DisassemblyInfo> Cache;
 	uint32_t Size = 0;
 };
 

@@ -164,6 +164,7 @@
     <ClInclude Include="Socket.h" />
     <ClInclude Include="spng.h" />
     <ClInclude Include="StringUtilities.h" />
+    <ClInclude Include="VirtualMemory.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="UPnPPortMapper.h" />
     <ClInclude Include="UTF8Util.h" />
@@ -332,6 +333,7 @@
     <ClCompile Include="FolderUtilities.cpp" />
     <ClCompile Include="HexUtilities.cpp" />
     <ClCompile Include="PlatformUtilities.cpp" />
+    <ClCompile Include="VirtualMemory.cpp" />
     <ClCompile Include="Serializer.cpp" />
     <ClCompile Include="SimpleLock.cpp" />
     <ClCompile Include="Socket.cpp" />

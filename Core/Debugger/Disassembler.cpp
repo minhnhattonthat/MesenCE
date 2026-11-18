@@ -43,7 +43,8 @@ Disassembler::Disassembler(IConsole* console, Debugger* debugger)
 void Disassembler::InitSource(MemoryType type)
 {
 	uint32_t size = _memoryDumper->GetMemorySize(type);
-	_sources[(int)type] = { vector<DisassemblyInfo>(size), size };
+	_sources[(int)type].Cache = ZeroedArray<DisassemblyInfo>(size);
+	_sources[(int)type].Size = size;
 }
 
 DisassemblerSource& Disassembler::GetSource(MemoryType type)

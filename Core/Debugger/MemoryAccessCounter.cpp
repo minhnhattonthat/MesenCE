@@ -16,7 +16,7 @@ MemoryAccessCounter::MemoryAccessCounter(Debugger* debugger)
 	for(int i = (int)DebugUtilities::GetLastCpuMemoryType() + 1; i < DebugUtilities::GetMemoryTypeCount(); i++) {
 		uint32_t memSize = _debugger->GetMemoryDumper()->GetMemorySize((MemoryType)i);
 		if(memSize > 0) {
-			_counters[i] = vector<AddressCounters>(memSize);
+			_counters[i] = ZeroedArray<AddressCounters>(memSize);
 		}
 	}
 }
@@ -72,7 +72,8 @@ void MemoryAccessCounter::ResetCounts()
 {
 	DebugBreakHelper helper(_debugger);
 	for(int i = 0; i < DebugUtilities::GetMemoryTypeCount(); i++) {
-		memset(_counters[i].data(), 0, _counters[i].size() * sizeof(AddressCounters));
+		//Runs on every state load: re-mapping keeps untouched pages free, memset would commit the whole table
+		_counters[i].Clear();
 	}
 	_enableBreakOnUninitRead = _debugger->GetConsole()->GetMasterClock() < 1000;
 }

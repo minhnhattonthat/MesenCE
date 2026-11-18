@@ -3,6 +3,7 @@
 #include "Debugger/DebugTypes.h"
 #include "Debugger/DebugUtilities.h"
 #include "Shared/MemoryType.h"
+#include "Utilities/VirtualMemory.h"
 
 class Debugger;
 class SnesMemoryManager;
@@ -33,7 +34,8 @@ enum class ReadResult
 class MemoryAccessCounter
 {
 private:
-	vector<AddressCounters> _counters[DebugUtilities::GetMemoryTypeCount()];
+	//One entry (40 bytes) per byte of every ROM/RAM: demand-zero so only addresses the game touches take RAM
+	ZeroedArray<AddressCounters> _counters[DebugUtilities::GetMemoryTypeCount()];
 
 	Debugger* _debugger = nullptr;
 	bool _enableBreakOnUninitRead = false;

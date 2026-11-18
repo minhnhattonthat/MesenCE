@@ -248,6 +248,7 @@
     <ClInclude Include="spng.h" />
     <ClInclude Include="StaticFor.h" />
     <ClInclude Include="StringUtilities.h" />
+    <ClInclude Include="VirtualMemory.h" />
     <ClInclude Include="SZReader.h" />
     <ClInclude Include="TimeUtilities.h" />
     <ClInclude Include="UPnPPortMapper.h" />
@@ -370,6 +371,7 @@
     <ClCompile Include="Patches\IpsPatcher.cpp" />
     <ClCompile Include="Patches\UpsPatcher.cpp" />
     <ClCompile Include="PlatformUtilities.cpp" />
+    <ClCompile Include="VirtualMemory.cpp" />
     <ClCompile Include="PNGHelper.cpp" />
     <ClCompile Include="AutoResetEvent.cpp" />
     <ClCompile Include="Scale2x\scale2x.cpp">
